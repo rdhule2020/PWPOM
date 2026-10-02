@@ -1,4 +1,5 @@
 import {Page, Locator} from '@playwright/test'
+import {TEST_DATA} from '../data/testData';
 
 export class LoginPage{
 
@@ -15,11 +16,11 @@ export class LoginPage{
     }
 
     async openApplication(){
-        await this.page.goto('https://www.saucedemo.com/');
+        await this.page.goto('/');
     }
     async doLogin(){
-        await this.username.fill('standard_user');
-        await this.password.fill('secret_sauce');
+        await this.username.fill(TEST_DATA.user.username);
+        await this.password.fill(TEST_DATA.user.password);
         await this.loginbtn.click();
     }
 
