@@ -6,7 +6,6 @@ test('Validate Login', async({page, loginpage})=>{
     await loginpage.doLogin(); */
     await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
-    await page.waitForTimeout(5000);
 })
 
 test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
@@ -14,14 +13,12 @@ test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
     await loginpage.doLogin(); */
     await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
-    await page.waitForTimeout(3000);
     await productlistpage.clickAddToCart();
     await expect(productlistpage.cartBadgeicon).toHaveText('1');
     await expect(page).toHaveURL(TEST_DATA.urls.inventory)
     await productlistpage.clickCartBadgeIcon();
     await productlistpage.clickCartIcon();
     await expect(page).toHaveURL(TEST_DATA.urls.cart)
-    await page.waitForTimeout(3000);
 })
 
 test('Validate Cart Product', async({page, loginpage, productlistpage, cartpage})=>{
@@ -29,13 +26,11 @@ test('Validate Cart Product', async({page, loginpage, productlistpage, cartpage}
      await loginpage.doLogin(); */
     await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
-    await page.waitForTimeout(3000);
     await productlistpage.clickAddToCart();
     await expect(productlistpage.cartBadgeicon).toHaveText('1');
     await productlistpage.clickCartBadgeIcon();
     await productlistpage.clickCartIcon();
     await expect(page).toHaveURL(TEST_DATA.urls.cart)
     await expect(cartpage.cartProduct).toHaveText('Sauce Labs Backpack');
-    await page.waitForTimeout(3000);
 
 })
