@@ -2,15 +2,17 @@ import {test, expect} from '../fixture/pageObjectFixture';
 import { TEST_DATA } from '../data/testData';
 
 test('Validate Login', async({page, loginpage})=>{
-    await loginpage.openApplication();
-    await loginpage.doLogin();
+    /*  await loginpage.openApplication();
+    await loginpage.doLogin(); */
+    await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
     await page.waitForTimeout(5000);
 })
 
 test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
-    await loginpage.openApplication();
-    await loginpage.doLogin();
+    /* await loginpage.openApplication();
+    await loginpage.doLogin(); */
+    await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
     await page.waitForTimeout(3000);
     await productlistpage.clickAddToCart();
@@ -23,8 +25,9 @@ test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
 })
 
 test('Validate Cart Product', async({page, loginpage, productlistpage, cartpage})=>{
-    await loginpage.openApplication();
-    await loginpage.doLogin();
+   /*await loginpage.openApplication();
+     await loginpage.doLogin(); */
+    await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
     await page.waitForTimeout(3000);
     await productlistpage.clickAddToCart();
