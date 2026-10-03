@@ -14,6 +14,7 @@ test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
     await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
     await productlistpage.clickAddToCart();
+    await productlistpage.waitForPageLoad();
     await productlistpage.header.openandCloseBurger();
     await expect(productlistpage.cartBadgeicon).toHaveText('1');
     await expect(page).toHaveURL(TEST_DATA.urls.inventory)
