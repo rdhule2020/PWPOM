@@ -14,6 +14,7 @@ test('ValidateAddToCart', async({page, loginpage, productlistpage})=>{
     await page.goto(TEST_DATA.urls.inventory);
     await expect(page).toHaveURL(TEST_DATA.urls.inventory);
     await productlistpage.clickAddToCart();
+    await productlistpage.header.openandCloseBurger();
     await expect(productlistpage.cartBadgeicon).toHaveText('1');
     await expect(page).toHaveURL(TEST_DATA.urls.inventory)
     await productlistpage.clickCartBadgeIcon();
@@ -32,5 +33,5 @@ test('Validate Cart Product', async({page, loginpage, productlistpage, cartpage}
     await productlistpage.clickCartIcon();
     await expect(page).toHaveURL(TEST_DATA.urls.cart)
     await expect(cartpage.cartProduct).toHaveText('Sauce Labs Backpack');
-
+    await cartpage.header.openandCloseBurger();
 })
